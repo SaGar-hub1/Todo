@@ -1,20 +1,17 @@
-<h1 class="text-center">{{title}}</h1>
-<div class="card" style="width: 70rem;">
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Subject</th>
-      <th scope="col">Todo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- <tr *ngfor="let Notes of notess">
-      <td>{{Notes.Id}}</td>
-      <td>{{Notes.subject}}</td>
-      <td>{{Notes.note}}</td>
-    </tr> -->
-
-  </tbody>
-</table>
+<div class="container m-5">
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    @for(note of Data; track note){
+    <div class="col">
+      <div class="card text-dark bg-light mb-4 h-100">
+        <div class="card-header">{{note.subject}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{note.subject}}</h5>
+          <p class="card-text">{{note.note}}</p>
+          <a href="#" class="card-link">View</a>
+          <a href="#" class="card-link">Delete</a>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
 </div>

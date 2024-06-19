@@ -1,32 +1,43 @@
-import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA, OnInit, inject } from '@angular/core';
 import { Notes } from '../notes';
-import { NgFor, NgForOf } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgForOf],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   title="TODO APP";
-  notess:Notes[]=[];
+
+  httpClient = inject(HttpClient);
+  Data:Notes[]=[];
   
   ngOnInit():void{
-    this.notess=[
-      {
-      "Id":4,
-      "subject":"Test subject",
-      "note":"Test Note"
-      },
-      {
-        "Id":5,
-        "subject":"Test subject",
-        "note":"Test Note"
-      }
-  ]
-  }
-  
+    this.fetchData();
 
+  //   this.notess=[
+  //    {
+  //     "Id":4,
+  //     "subject":"Test subject",
+  //     "note":"Test Note"
+  //     },
+  //     {
+  //       "Id":5,
+  //       "subject":"Test subject",
+  //       "note":"Test Note"
+  //     } 
+  // ]
+  }
+  fetchData(){
+    this.httpClient
+    .get(`http://localhost:8080/notes`)
+    .subscribe((notess:any) => {
+      this.Data = notess;
+      console.log(this.Data);
+    });
+  }
 }
