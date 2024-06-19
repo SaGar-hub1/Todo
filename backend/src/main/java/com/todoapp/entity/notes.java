@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class notes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private Long Id;
     @Column(name = "subject")
     private String subject;
     @Column(name = "note")
@@ -16,17 +16,17 @@ public class notes {
     public notes() {
     }
 
-    public notes(int id, String subject, String note) {
+    public notes(Long id, String subject, String note) {
         Id = id;
         this.subject = subject;
         this.note = note;
     }
 
-    public int getId() {
+    public Long getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         Id = id;
     }
 
