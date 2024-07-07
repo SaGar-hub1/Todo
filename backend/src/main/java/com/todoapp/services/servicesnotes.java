@@ -3,6 +3,7 @@ package com.todoapp.services;
 import com.todoapp.entity.notes;
 import com.todoapp.repository.NoteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,8 +35,23 @@ public class servicesnotes implements Serviceimpl {
     }
 
     @Override
-    public notes updatenotes(notes note) {
-        return noteRepo.save(note);
+    public notes updatenotes(Long id, notes note) {
+
+        notes note1 = null;
+        try {
+            note1 = noteRepo.findById(id)
+                    .orElseThrow(() -> new RuntimeException());
+        } catch ( RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+
+        note1.setNote(note.getNote());
+        note1.setId(note1.getId());
+        note1.setSubject(note.getSubject());
+
+        return noteRepo.save(note1);
+
+        //return noteRepo.save(note);
     }
 
     @Override

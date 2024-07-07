@@ -5,6 +5,7 @@ import com.todoapp.repository.NoteRepo;
 import com.todoapp.services.Serviceimpl;
 import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,9 +33,9 @@ public class noteController {
     public notes savenotes(@RequestBody notes note) {
         return serviceimpl.savenotes(note);
     }
-    @PutMapping
-    public notes updatenotes(@RequestBody notes note){
-        return serviceimpl.updatenotes(note);
+    @PutMapping("/{id}")
+    public notes updatenotes(@PathVariable Long id, @RequestBody notes note) {
+        return serviceimpl.updatenotes(id, note);
     }
     @DeleteMapping("/notes/{id}")
         public void deletenotes(@PathVariable ("id") Long id) {
