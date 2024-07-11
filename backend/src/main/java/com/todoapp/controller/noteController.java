@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 public class noteController {
     @Autowired
     private final Serviceimpl serviceimpl;

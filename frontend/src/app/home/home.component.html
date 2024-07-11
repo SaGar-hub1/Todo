@@ -7,8 +7,10 @@
         <div class="card-body">
           <h5 class="card-title">{{note.subject}}</h5>
           <p class="card-text">{{note.note}}</p>
-          <a href="#" class="card-link">View</a>
-          <a href="#" class="card-link">Delete</a>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <button type="button" class="btn btn-primary me-3 float-end">Edit</button>
+          <button type="button" (click)="deletenote($event, note.id)" class="btn btn-danger">Delete</button>
         </div>
       </div>
     </div>

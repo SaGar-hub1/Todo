@@ -1,0 +1,26 @@
+<div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h4>Make note <a class="btn btn-danger float-end">Back</a></h4>
+
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="saveNote()">
+                    <div class="mb-3">
+                        <label>title</label>
+                        <input type="text" [(ngModel)]="title" name="Tital" class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>Description</label>
+                        <input type="text" [(ngModel)]="Description" name="Description" class="form-control"/>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
